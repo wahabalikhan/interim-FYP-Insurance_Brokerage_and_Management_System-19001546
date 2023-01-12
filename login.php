@@ -3,19 +3,20 @@ include_once 'header.php';
 ?>
 
 <main>
-    <h1>Log in</h1>
-    <p>This is the login page of the IBMS</p>
+    <div class="container">
+        <h1>Log in</h1>
+        <p>This is the login page of the IBMS</p>
 
-    <div class="login-form">
-        <form action="includes/login.inc.php" method="post"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed-->
+        <div class="login-form">
+            <form action="includes/login.inc.php" method="post"> <!-- action="includes/login.inc.php" is where user will be sent to when form submitted, using post method to hide sensitive data in URL but will still be passed-->
 
-        <input type="text" name="consumer_email" placeholder="Email address">
-        <input type="password" name="consumer_password" placeholder="Password">
-        <button type="submit" name="submit">Log in</button>
-        </form>
-    </div>
+                <input type="text" name="consumer_email" placeholder="Email address">
+                <input type="password" name="consumer_password" placeholder="Password">
+                <button type="submit" name="submit">Log in</button>
+            </form>
+        </div>
 
-    <?php
+        <?php
         # error-handling messages
         # GET to check for data we can see
         if (isset($_GET["error"])) {
@@ -28,7 +29,8 @@ include_once 'header.php';
         }
         ?>
 
-    <script src="assets/js/app.js"></script>
+        <script src="assets/js/app.js"></script>
+    </div>
 </main>
 
 <?php

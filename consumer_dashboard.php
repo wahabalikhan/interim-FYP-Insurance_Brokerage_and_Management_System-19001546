@@ -4,7 +4,8 @@ include_once 'header.php';
 ?>
 
 <main>
-<?php
+    <div class="container">
+        <?php
         # error-handling messages
         # GET to check for data we can see
         if (isset($_GET["error"])) {
@@ -13,9 +14,11 @@ include_once 'header.php';
             }
         }
         ?>
-    <h1>Hi Consumer, welcome to your dashboard</h1>
-    <p>This is the consumer dashboard page of the IBMS</p>
-    <script src="assets/js/app.js"></script>
+        <h1>Hi <?php while ($row = mysqli_fetch_array($records)) {
+                    echo $row['consumer_fullname'];
+                } ?>, welcome to your dashboard</h1>
+        <script src="assets/js/app.js"></script>
+    </div>
 </main>
 
 <?php

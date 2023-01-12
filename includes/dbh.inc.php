@@ -9,7 +9,7 @@
 $serverName = "localhost";
 $databaseUsername = "root";
 $databasePassword = "root";
-$databaseName = "int-FYP-Insurance_Brokerage_and_Management_System-19001546_2022";
+$databaseName = "interim-FYP-Insurance_Brokerage_and_Management_System-19001546";
 
 # Open up connection to database
 $conn = mysqli_connect($serverName, $databaseUsername, $databasePassword, $databaseName);
