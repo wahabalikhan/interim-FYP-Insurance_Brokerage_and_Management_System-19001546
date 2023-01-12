@@ -1,3 +1,9 @@
+<?php
+# Code adapted from https://www.youtube.com/watch?v=gCo6JqGMi30, How To Create A Login System In PHP For Beginners | Procedural MySQLi | PHP Tutorial
+# user logged in on every page on application
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +22,16 @@
     <p>IBMS</p>
     <ul>
         <li><a href="index.php">Home</a></li>
-        <li><a href="signup.php">Sign up</a></li>
-        <li><a href="login.php">Log in</a></li>
+        <?php
+        # check if consumer logged in
+        if (isset($_SESSION["consumer_email"])) {
+            echo "<li><a href='profile.php'>Profile</a></li>";
+            echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+        } else {
+            # non-registered user
+            echo "<li><a href='signup.php'>Sign up</a></li>";
+            echo "<li><a href='login.php'>Log in</a></li>";
+        }
+        ?>
     </ul>
 </header>

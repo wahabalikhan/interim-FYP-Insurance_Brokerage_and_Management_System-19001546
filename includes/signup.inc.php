@@ -6,30 +6,30 @@
 if (isset($_POST["submit"])) {
 
     #Get data from URL
-    $consumer_fullname = $_POST['consumer_fullname'];
-    $consumer_email_address = $_POST['consumer_email_address'];
-    $consumer_password = $_POST['consumer_password'];
-    $consumer_password_repeat = $_POST['consumer_password_repeat'];
-    $consumer_phone_number = $_POST['consumer_phone_number'];
-    $consumer_address = $_POST['consumer_address'];
+    $consumer_fullname = $_POST["consumer_fullname"];
+    $consumer_email = $_POST["consumer_email"];
+    $consumer_password = $_POST["consumer_password"];
+    $consumer_password_repeat = $_POST["consumer_password_repeat"];
+    $consumer_phone = $_POST["consumer_phone"];
+    $consumer_address = $_POST["consumer_address"];
 
     # error handling—catch any errors user makes when passing data
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
 
     # catch errors—empty inputs
-    if (emptyInputSignup($consumer_fullname, $consumer_email_address, $consumer_password, $consumer_password_repeat, $consumer_phone_number, $consumer_address) !== false) {
+    if (emptyInputSignup($consumer_fullname, $consumer_email, $consumer_password, $consumer_password_repeat, $consumer_phone, $consumer_address) !== false) {
         header("location: ../signup.php?error=emptyinput");
         # stop script from running
         exit();
     }
 
-    /* # catch errors—invalid email address
-    if (invalidEmailAddress($email_address) !== false) {
+    # catch errors—invalid email address
+    if (invalidEmailAddress($consumer_email) !== false) {
         header("location: ../signup.php?error=invalidemailaddress");
         # stop script from running
         exit();
-    } */
+    }
 
     # catch errors—passwords not the same
     if (passwordMatch($consumer_password, $consumer_password_repeat) !== false) {
@@ -39,14 +39,14 @@ if (isset($_POST["submit"])) {
     }
 
     # catch errors—email address already exists. Using $conn to check database if data exists
-    if (emailAddressExists($conn, $consumer_email_address) !== false) {
+    if (emailAddressExists($conn, $consumer_email) !== false) {
         header("location: ../signup.php?error=emailaddressalreadyexists");
         # stop script from running
         exit();
     }
 
     # if no errors made, then create record into database
-    createUser($conn, $consumer_fullname, $consumer_email_address, $consumer_password, $consumer_phone_number, $consumer_address);
+    createUser($conn, $consumer_fullname, $consumer_email, $consumer_password, $consumer_phone, $consumer_address);
 } else {
     header("location: ../signup.php");
     exit();
