@@ -108,7 +108,14 @@ function createUser($conn, $consumer_fullname, $consumer_email, $consumer_passwo
 
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
+    
+    $emailExists = emailAddressExists($conn, $consumer_email);
+    
+    session_start();
+    $_SESSION["consumer_id"] = $emailExists["consumer_id"];
+    $_SESSION["consumer_email"] = $emailExists["consumer_email"];
     header("location: ../consumer_dashboard.php?error=none");
+    exit();
 }
 
 function emptyInputLogin($consumer_email, $consumer_password)
