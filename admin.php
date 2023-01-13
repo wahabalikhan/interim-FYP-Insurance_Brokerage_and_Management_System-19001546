@@ -31,7 +31,7 @@ if (isAdmin()) {
             <td><input type=text name=consumer_address value='" . $row["consumer_address"] . "'></td>
             <td><input type=hidden name=user_level value='" . $row["user_level"] . "'></td>
             <input type=hidden name=consumer_id value='" . $row["consumer_id"] . "'>
-            <td><input type='submit' value='Add'></td>
+            <td><input type='submit' name='add-consumer' value='Add'></td>
             </form><tr>";
             ?>
         </table>
@@ -50,7 +50,7 @@ if (isAdmin()) {
             </tr>
             <?php
             while ($row = mysqli_fetch_array($records)) {
-                echo "<tr><form action='includes/update.admin.inc.php' method='POST'>
+                echo "<tr><form action='includes/admin.update.inc.php' method='POST'>
                 <td><input type=text name=consumer_fullname value='" . $row["consumer_fullname"] . "'></td>
                 <td><input type=text name=consumer_email value='" . $row["consumer_email"] . "'></td>
                 <td><input type=text name=consumer_password value='" . $row["consumer_password"] . "'></td>
