@@ -1,4 +1,10 @@
 <?php
+
+session_start();
+define('user_level_broker', 'broker');
+define('user_level_consumer', 'consumer');
+define('user_level_none', 'none');
+
 # Code adapted from https://www.youtube.com/watch?v=gCo6JqGMi30, How To Create A Login System In PHP For Beginners | Procedural MySQLi | PHP Tutorial
 
 # all functions that can be referenced to do something in website
@@ -108,9 +114,9 @@ function createUser($conn, $consumer_fullname, $consumer_email, $consumer_passwo
 
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    
+
     $emailExists = emailAddressExists($conn, $consumer_email);
-    
+
     session_start();
     $_SESSION["consumer_id"] = $emailExists["consumer_id"];
     $_SESSION["consumer_email"] = $emailExists["consumer_email"];
@@ -156,7 +162,34 @@ function loginUser($conn, $consumer_email, $consumer_password)
         session_start();
         $_SESSION["consumer_id"] = $emailExists["consumer_id"];
         $_SESSION["consumer_email"] = $emailExists["consumer_email"];
+        $_SESSION['session_user_level'] === user_level_consumer;
         header("location: ../consumer_dashboard.php");
         exit();
+    }
+}
+
+function isNone()
+{
+    if ($_SESSION['session_user_level'] == user_level_none) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function isConsumer()
+{
+    if ($_SESSION['session_user_level'] == user_level_consumer) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isBroker()
+{
+    if ($_SESSION['session_user_level'] == user_level_broker) {
+        return true;
+    } else {
+        return false;
     }
 }

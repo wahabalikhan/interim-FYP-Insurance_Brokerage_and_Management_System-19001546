@@ -1,6 +1,10 @@
 <?php
-# Code adapted from https://www.youtube.com/watch?v=gCo6JqGMi30, How To Create A Login System In PHP For Beginners | Procedural MySQLi | PHP Tutorial
 include_once 'header.php';
+require_once 'includes/functions.inc.php';
+
+if (isConsumer()) {
+    header("location: consumer_dashboard.php");
+}
 ?>
 
 <main>

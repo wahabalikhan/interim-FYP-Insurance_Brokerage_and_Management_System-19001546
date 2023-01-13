@@ -1,5 +1,11 @@
 <?php
 include_once 'header.php';
+
+require_once 'includes/functions.inc.php';
+
+if (isNone()) {
+    header("location: signup.php");
+}
 ?>
 
 <main>

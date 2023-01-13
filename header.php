@@ -31,6 +31,9 @@ $records = mysqli_query($conn, $sql);
                 echo "<li><a href='consumer_dashboard.php'>Home</a></li>";
                 echo "<li><a href='profile.php'>Profile</a></li>";
                 echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
+            } else if (isset($_SESSION["admin_email"])) {
+                echo "<li><a href='admin.php'>Admin panel</a></li>";
+                echo "<li><a href='includes/logout.inc.php'>Log out</a></li>";
             } else {
                 # non-registered user
                 echo "<li><a href='signup.php'>Sign up</a></li>";
