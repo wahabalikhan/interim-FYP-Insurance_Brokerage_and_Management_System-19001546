@@ -89,6 +89,8 @@ if (isAdmin()) {
             }
             ?>
         </table>
+        <br>
+        <a href="http://localhost:8888/phpMyAdmin/?lang=en">PHPMyAdmin database access link</a>
         <script src="assets/js/app.js"></script>
     </div>
 </main>
