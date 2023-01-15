@@ -5,6 +5,8 @@ define('user_level_broker', 'broker');
 define('user_level_consumer', 'consumer');
 define('user_level_none', 'none');
 
+require 'dbh.inc.php';
+
 # Code adapted from https://www.youtube.com/watch?v=gCo6JqGMi30, How To Create A Login System In PHP For Beginners | Procedural MySQLi | PHP Tutorial
 
 # all functions that can be referenced to do something in website
